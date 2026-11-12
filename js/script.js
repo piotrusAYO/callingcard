@@ -75,8 +75,8 @@ stage.addEventListener('click',e=>{if(!entered||still||e.target.closest('.card,.
  g.restore();requestAnimationFrame(fx2)})();
 
 /* === v5: powitania, avatar, platki, auto-tla, kursor === */
-const GR=['こんにちは','Cześć','Hello','やあ'],hiEl=$('hi');let gi=0;
-setInterval(()=>{hiEl.style.opacity=0;hiEl.style.transform='translateY(6px)';setTimeout(()=>{gi=(gi+1)%GR.length;hiEl.textContent=GR[gi];hiEl.style.opacity=1;hiEl.style.transform=''},350)},2800);
+const GR=['こんにちは、<b>Piotrek</b>です','Cześć, jestem <b>Piotrek</b>',"Hello, I'm <b>Piotrek</b>",'やあ、<b>Piotrek</b>だよ'],hiEl=$('hi');let gi=0;
+setInterval(()=>{hiEl.style.opacity=0;hiEl.style.transform='translateY(6px)';setTimeout(()=>{gi=(gi+1)%GR.length;hiEl.innerHTML=GR[gi];hiEl.style.opacity=1;hiEl.style.transform=''},350)},2800);
 function burst(cx,cy,n){const r=stage.getBoundingClientRect();for(let i=0;i<n;i++){const a=Math.random()*6.3,v=(Math.random()*3+1)*dpr;sparks.push({x:(cx-r.left)*dpr,y:(cy-r.top)*dpr,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:1})}}
 document.querySelector('.av').addEventListener('click',e=>{const a=e.currentTarget;a.classList.remove('pop');void a.offsetWidth;a.classList.add('pop');const r=a.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,40);say('Cześć, jestem Piotrek 👋',"Hi, I'm Piotrek 👋")});
 let petals=true;const PT=Array.from({length:26},()=>({x:Math.random(),y:Math.random(),s:.4+Math.random()*.8,r:3+Math.random()*4,p:Math.random()*6.3}));
