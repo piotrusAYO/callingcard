@@ -8,7 +8,7 @@ stage.addEventListener('mousemove',e=>{const r=stage.getBoundingClientRect(),x=(
  const c=card.getBoundingClientRect();card.style.setProperty('--mx',e.clientX-c.left+'px');card.style.setProperty('--my',e.clientY-c.top+'px')});
 stage.addEventListener('mouseleave',()=>card.style.transform='');
 /* jezyk bez przeladowania strony, dzieki temu muzyka gra dalej */
-let lang='pl';const T={pl:'yao – nieoficjalna wizytówka',en:'yao – unofficial card'};
+let lang='pl';const T={pl:'yao',en:'yao'};
 function setLang(l){lang=l;document.documentElement.lang=l;document.title=T[l];
  document.querySelectorAll('[data-'+l+']').forEach(e=>e.textContent=e.dataset[l]);
  document.querySelectorAll('[data-a'+l+']').forEach(e=>{e.setAttribute('aria-label',e.dataset['a'+l]);e.title=e.dataset['a'+l]});
@@ -43,7 +43,6 @@ function frame(){t+=.016;g.clearRect(0,0,W,H);warp*=.968;if(warp<.05)warp=0;g.fi
 
 /* === v4: tla, kopiowanie nicku, pasek postepu, skroty, spadajace gwiazdy, burst === */
 const toast=$('toast');let tt;const say=(pl,en)=>{toast.textContent=lang==='pl'?pl:en;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),1900)};
-$('dc').addEventListener('click',e=>{e.preventDefault();const f=()=>say('Skopiowano nick: piotrek','Copied username: piotrek');(navigator.clipboard?navigator.clipboard.writeText('piotrek'):Promise.reject()).then(f).catch(()=>{const t=document.createElement('textarea');t.value='piotrek';document.body.append(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove();f()})});
 const BG=[["aurora","Aurora",{"a":"91,192,235","b":"190,90,150","l":"#9fd8f5","p":"#11152a","g":"14,18,38","m":"#9aa3c4"}],["gradient-cieply","Gradient",{"a":"238,138,99","b":"97,139,209","l":"#fabfa8","p":"#1b120e","g":"25,15,11","m":"#d3c2bb"}],["fale-niebieskie","Niebieskie fale",{"a":"99,139,238","b":"146,97,209","l":"#a8bffa","p":"#0e121b","g":"11,15,25","m":"#bbc2d3"}],["teczowy","Tęczowy",{"a":"202,99,238","b":"209,97,126","l":"#e5a8fa","p":"#170e1b","g":"21,11,25","m":"#cdbbd3"}],["neon","Neon",{"a":"99,208,238","b":"209,97,126","l":"#a8e9fa","p":"#0e181b","g":"11,22,25","m":"#bbced3"}],["mrok","Mrok",{"a":"238,139,99","b":"209,97,174","l":"#fac0a8","p":"#1b120e","g":"25,15,11","m":"#d3c2bb"}],["zachod","Zachód",{"a":"238,136,99","b":"114,97,209","l":"#fabea8","p":"#1b120e","g":"25,14,11","m":"#d3c1bb"}],["granat","Granat",{"a":"99,194,238","b":"101,97,209","l":"#a8e0fa","p":"#0e171b","g":"11,20,25","m":"#bbcbd3"}],["fiolet-fale","Fioletowe fale",{"a":"99,131,238","b":"166,97,209","l":"#a8bbfa","p":"#0e111b","g":"11,14,25","m":"#bbc0d3"}],["plynny","Płynny",{"a":"238,99,131","b":"209,161,97","l":"#faa8bb","p":"#1b0e11","g":"25,11,14","m":"#d3bbc0"}]];
 let bi=0;const scrim=document.createElement('i');scrim.className='scrim';stage.prepend(scrim);
 const wps=[0,1].map(()=>{const d=document.createElement('i');d.className='wp';stage.prepend(d);return d});let wi=0;

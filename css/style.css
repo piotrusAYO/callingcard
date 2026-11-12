@@ -128,7 +128,6 @@ html,body{height:100dvh;overscroll-behavior:none}
 .keys{font-size:12px;opacity:.55}
 @media(max-width:640px){.keys{display:none}}
 .wp{transform:scale(1.06);transition:opacity 1.1s ease,transform .5s ease-out}
-.row#dc{cursor:copy}
 .ico.spin svg{animation:spin .6s}
 
 /* === v5 === */
